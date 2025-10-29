@@ -1,8 +1,10 @@
 ### Consulta todas las tareas
 GET http://localhost:3000/todos
 
+
+
 ### Consulta una tarea por su id
-GET http://localhost:3000/todos/da43f8aa-8097-49fc-8c0a-814336aabf28
+GET http://localhost:3000/todos/6feb1897-6d44-4eb2-a2f7-88b861ab508f
 
 ### Crear una tarea
 
@@ -10,18 +12,39 @@ POST http://localhost:3000/todos
 Content-Type: application/json
 
 {
-    "title": "Agregar metodo delete() a la clase Todo",
-    "description": "Tarea para realizar en clase",
-    "completed": false,
+    "title": "Testing de la API",
+    "description": "Tarea para realizar con user",
+    "completed": false
 }
 
 ### Actualizar una tarea
-PATCH http://localhost:3000/todos/da43f8aa-8097-49fc-8c0a-814336aabf28
+PATCH http://localhost:3000/todos/6feb1897-6d44-4eb2-a2f7-88b861ab508f
 Content-Type: application/json
 
-{ "description": "Test ",
-    "completed": true
+{ 
+
+  "title": "Probando JSON---",
+  "description": "Espero que funcione",
+  "completed": true
 }
 
 ### Eliminar una tarea
-DELETE http://localhost:3000/todos/da43f8aa-8097-49fc-8c0a-814336aabf28
+DELETE http://localhost:3000/todos/f5f82a18-8389-434d-b999-ca1c530b644e
+
+
+
+###Consulta todos los usuarios
+GET http://localhost:3000/users
+
+### Consulta un usuario por su id
+GET http://localhost:3000/users/1
+
+### Crear un usuario
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Yehudi Sanabria",
+    "email": "yehudi@sanabria.com",
+    "password": "123456"
+}

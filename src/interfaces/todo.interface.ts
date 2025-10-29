@@ -5,6 +5,6 @@ export interface Todo{
     title: string
     description?: string | null
     completed: boolean
-    userId?: string | null
+    userId?: number | null
     user?: User | null;
 }

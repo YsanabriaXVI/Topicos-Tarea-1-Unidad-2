@@ -14,10 +14,13 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
-  Todo  Todo[] //Relacion Uno a muchos
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  todos     Todo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Todo {

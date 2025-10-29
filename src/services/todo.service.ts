@@ -12,16 +12,17 @@ export const getAll = async(): Promise<Todo[]> => {
   return await prisma.todo.findMany({
     orderBy:{
       'createdAt': 'desc'
-    }
-  });
-};
+    },
+    include: {user: {select: {name: true, email: true}}}
+}) as Todo[]};
 
 export const findById = async(id: string): Promise<Todo | null> => { 
     return await prisma.todo.findUnique({
       where:{
         id
-      }
-    })
+      },
+      include:{user: {select: {name: true, email: true}}}
+    }) as Todo | null
 };
 
 // export const create = async(todo: Partial<Todo>): Promise<Todo> =>{
@@ -36,14 +37,15 @@ export const findById = async(id: string): Promise<Todo | null> => {
 // }
 
 export const create = async (todo: Partial<Todo>): Promise<Todo> => {
-  const newTodo: Todo = {
-    id: uuid(),
-    ...todo,
-  } as Todo;
   // todos.push(newTodo);
-
-return await prisma.todo.create({
-    data: newTodo
+  return await prisma.todo.create({
+    data: {
+      id: todo.id,
+      title: todo.title!,
+      description: todo.description ?? null,
+      completed: todo.completed || false,
+      userId: todo.userId || null
+    }
   })
 };
 
@@ -67,13 +69,20 @@ export const updateTarea = async (
   todoId: string,
   payload: Partial<Todo>
 ): Promise<Todo | null> => {
-    return await prisma.todo.update({
-      where: {
-        id: todoId,
-      }, data: payload,
-    })
-    
-    //?todos.splice(index, 1, tarea); Forma 1
-    //*todos[index] = {...todos[index], ...tarea}; Forma 2
-    // return todos[index];
+     try {
+    const updated = await prisma.todo.update({
+      where: { id: todoId },
+      data: {
+        title: payload.title,
+        description: payload.description ?? undefined,
+        completed: payload.completed,
+        userId: payload.userId ?? undefined,
+      },
+    });
+    return updated as unknown as Todo;
+  } catch (e) {
+    console.log(e);
+    return null;
+    ;
+  }
 };
