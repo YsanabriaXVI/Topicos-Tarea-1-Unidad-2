@@ -13,7 +13,6 @@ Content-Type: application/json
     "title": "Agregar metodo delete() a la clase Todo",
     "description": "Tarea para realizar en clase",
     "completed": false,
-    "userId": 1
 }
 
 ### Actualizar una tarea

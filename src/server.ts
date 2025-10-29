@@ -1,6 +1,7 @@
 import express from 'express';
 // import { loadEnvFile } from 'node:process';
 import todosRoutes from './routes/todos.routes'
+import userRoutes from "./routes/users.routes";
 import { errorHandler } from './middlewares/errorHandler';
 import dotenv from 'dotenv';
 
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 //?Middlewares
 app.use(errorHandler);
 app.use('/todos', todosRoutes)
+app.use('/users', userRoutes)
 
 const PORT = process.env.PORT || 3000;
 

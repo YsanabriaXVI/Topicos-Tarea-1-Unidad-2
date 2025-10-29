@@ -1,5 +1,5 @@
 import { Todo } from "../interfaces/todo.interface";
-import {prisma} from '../db//client'
+import {prisma} from '../db/client'
 import { randomUUID as uuid } from "node:crypto";
 
 //TODO: Crear una conexion a la base de datos
