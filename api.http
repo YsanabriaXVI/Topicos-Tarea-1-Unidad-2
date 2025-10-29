@@ -1,0 +1,28 @@
+### Consulta todas las tareas
+GET http://localhost:3000/todos
+
+### Consulta una tarea por su id
+GET http://localhost:3000/todos/da43f8aa-8097-49fc-8c0a-814336aabf28
+
+### Crear una tarea
+
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+    "title": "Agregar metodo delete() a la clase Todo",
+    "description": "Tarea para realizar en clase",
+    "completed": false,
+    "userId": 1
+}
+
+### Actualizar una tarea
+PATCH http://localhost:3000/todos/da43f8aa-8097-49fc-8c0a-814336aabf28
+Content-Type: application/json
+
+{ "description": "Test ",
+    "completed": true
+}
+
+### Eliminar una tarea
+DELETE http://localhost:3000/todos/da43f8aa-8097-49fc-8c0a-814336aabf28
