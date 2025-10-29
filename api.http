@@ -4,7 +4,7 @@ GET http://localhost:3000/todos
 
 
 ### Consulta una tarea por su id
-GET http://localhost:3000/todos/6feb1897-6d44-4eb2-a2f7-88b861ab508f
+GET http://localhost:3000/todos/ca5fbf5f-c5d9-48d1-a45c-8be980e7b5aa
 
 ### Crear una tarea
 
@@ -18,33 +18,52 @@ Content-Type: application/json
 }
 
 ### Actualizar una tarea
-PATCH http://localhost:3000/todos/6feb1897-6d44-4eb2-a2f7-88b861ab508f
+PATCH http://localhost:3000/todos/ca5fbf5f-c5d9-48d1-a45c-8be980e7b5aa
 Content-Type: application/json
 
 { 
 
   "title": "Probando JSON---",
   "description": "Espero que funcione",
-  "completed": true
+  "completed": true,
+  "userId": 4
 }
 
 ### Eliminar una tarea
 DELETE http://localhost:3000/todos/f5f82a18-8389-434d-b999-ca1c530b644e
 
 
-
 ###Consulta todos los usuarios
-GET http://localhost:3000/users
+GET http://localhost:3000/api/users
 
 ### Consulta un usuario por su id
-GET http://localhost:3000/users/1
+GET http://localhost:3000/api/users/3
+
+### Consulta un usuario que no existe
+GET http://localhost:3000/api/users/xit3r
 
 ### Crear un usuario
-POST http://localhost:3000/users
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+    "name": "Alyx Star",
+    "email": "alyx.star@gmail.com",
+    "password": "12345678"
+}
+
+### Actualizar un usuario
+PATCH http://localhost:3000/api/users/10
 Content-Type: application/json
 
 {
     "name": "Yehudi Sanabria",
-    "email": "yehudi@sanabria.com",
-    "password": "123456"
+    "email": "yehudi.sanabria16@gmail.com",
+    "password": "AwqRtlcm4"
 }
+
+### Eliminar un usuario
+DELETE http://localhost:3000/api/users/5
+
+### Eliminar un usuario que no existe
+DELETE http://localhost:3000/api/users/xit3r

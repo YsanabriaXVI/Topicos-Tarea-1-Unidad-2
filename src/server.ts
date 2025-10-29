@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 //?Middlewares
 app.use(errorHandler);
 app.use('/todos', todosRoutes)
-app.use('/users', userRoutes)
+app.use('/api/users', userRoutes)
 
 const PORT = process.env.PORT || 3000;
 

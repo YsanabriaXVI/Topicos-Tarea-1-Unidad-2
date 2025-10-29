@@ -23,5 +23,6 @@ export const update = async (
 ): Promise<User | null> => prisma.user.update({ where: { id }, data });
 
 export const remove = async (id: number) => {
+  await prisma.todo.deleteMany({ where: { userId: id } }); 
   return await prisma.user.delete({ where: { id } });
 };

@@ -23,6 +23,12 @@ export const getById = async (
   try {
     const { id } = req.params;
 
+    if (isNaN(Number(id)) || Number(id) <= 0) {
+      return res.status(400).json({
+        message: `El parámetro '${id}' debe ser un número válido`,
+      });
+    }
+
     //! Aqui valimos de que el id existe
     const user = await userService.getById(Number(id));
 
@@ -64,6 +70,12 @@ export const updateUser = async (
   try {
     const id = req.params.id;
 
+    if (isNaN(Number(id)) || Number(id) <= 0) {
+      return res.status(400).json({
+        message: `El parámetro '${id}' debe ser un número válido`,
+      });
+    }
+
     const { success, error, data } = validateUserPartial(req.body);
 
     if (!success) {
@@ -86,26 +98,35 @@ export const updateUser = async (
   }
 };
 
-export const deleteUser = async (req: Request, res: Response, next: NextFunction) => {
-  try{
-          const id = req.params.id;
+export const deleteUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const id = req.params.id;
 
-          const user = await userService.getById(Number(id));
-
-         if(!user){
-          return res.status(404).json({
-              message: `User con id ${id} no encontrada`
-          })
-         }
-
-          await userService.remove(Number(id));
-
-          return res.status(200).json({
-              message: `Usuario con id ${id} eliminado`,
-              deleted: user
-          })
-
-      }catch(error){
-          next(error)
-      }
+    if (isNaN(Number(id)) || Number(id) <= 0) {
+      return res.status(400).json({
+        message: `El parámetro '${id}' debe ser un número válido`,
+      });
     }
+
+    const user = await userService.getById(Number(id));
+
+    if (!user) {
+      return res.status(404).json({
+        message: `User con id ${id} no encontrado`,
+      });
+    }
+
+    await userService.remove(Number(id));
+
+    return res.status(200).json({
+      message: `Usuario con id ${id} eliminado`,
+      deleted: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
