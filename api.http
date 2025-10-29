@@ -18,15 +18,15 @@ Content-Type: application/json
 }
 
 ### Actualizar una tarea
-PATCH http://localhost:3000/todos/ca5fbf5f-c5d9-48d1-a45c-8be980e7b5aa
+PATCH http://localhost:3000/todos/0d467334-828a-41af-82ac-7ad7392ae7c4
 Content-Type: application/json
 
 { 
 
-  "title": "Probando JSON---",
-  "description": "Espero que funcione",
+  "title": "Django",
+  "description": "Espero que funcione esto de Django",
   "completed": true,
-  "userId": 4
+  "userId": 1
 }
 
 ### Eliminar una tarea
@@ -37,7 +37,7 @@ DELETE http://localhost:3000/todos/f5f82a18-8389-434d-b999-ca1c530b644e
 GET http://localhost:3000/api/users
 
 ### Consulta un usuario por su id
-GET http://localhost:3000/api/users/3
+GET http://localhost:3000/api/users/1
 
 ### Consulta un usuario que no existe
 GET http://localhost:3000/api/users/xit3r
@@ -47,8 +47,8 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "Alyx Star",
-    "email": "alyx.star@gmail.com",
+    "name": "Camellonado",
+    "email": "camellonaldo@gmail.com",
     "password": "12345678"
 }
 
